@@ -10,15 +10,15 @@
 <body>
     <main>
         <h1>freeCodeCamp Survey Form</h1>
-        <p id="title-p  ">Thank you for taking the time to help us improve the platform</p>
+        <p id="title-p">Thank you for taking the time to help us improve the platform</p>
         <form action="">
-            <label for="name">Name<input class="inp" type="text" id="name" required></label>
-            <label for="email">Email<input class="inp" type="email" id="email" required></label>
-            <label for="age">Age<span>(optional)</span><input class="inp" type="number" id="age" required></label>
+            <label class="space" for="name">Name<input placeholder="Enter Your Name" class="inp" type="text" id="name" required></label>
+            <label class="space" for="email">Email<input placeholder="Enter Your Email" class="inp" type="email" id="email" required></label>
+            <label class="space" for="age">Age<span>(optional)</span><input placeholder="Enter Your Age" class="inp" type="number" id="age" required></label>
             <p>Which option best describes your current role?</p>
             <label for="role">
-                <select id="role" class="inp" aria-placeholder="Select current role">
-                    <option value="scr" disabled selected value>Select current role</option>
+                <select id="role" class="inp">
+                    <option class="grey" value="scr" disabled selected value>Select current role</option>
                     <option value="student">Student</option>
                     <option value="ftj">Full Time Job</option>
                     <option value="ftl">Full Time Learner</option>
@@ -27,13 +27,13 @@
                 </select>        
             </label>
             <p>Would you recommend freeCodeCamp to a friend?</p>
-            <label for="definitely"><input class="red" name="friend" type="radio">Definitely</label>
-            <label for="maybe"><input class="red" name="friend" type="radio">Maybe</label>
-            <label for="notsure"><input name="friend" class="red" type="radio">Not sure</label>
+            <label for="definitely"><input class="red" name="friend" type="radio" checked> Definitely</label>
+            <label for="maybe"><input class="red" name="friend" type="radio"> Maybe</label>
+            <label for="notsure"><input name="friend" class="red" type="radio"> Not sure</label>
             <p>What is your favorite feature of freeCodeCamp?</p>
             <label for="feature">
                 <select id="role1" class="inp" aria-placeholder="Select current role">
-                    <option value="sao" disabled selected value>Select an option</option>
+                    <option class="grey" value="sao" disabled selected value>Select an option</option>
                     <option value="Challange">Challange</option>
                     <option value="Project">Projects</option>
                     <option value="community">Community</option>
@@ -41,20 +41,20 @@
                 </select>        
             </label>
             <p>What would you like to see improved? <span>(Check all that apply)</span> </p>
-            <label for="fep"><input type="checkbox" class="red" name="fep" id="fep">Front-end Projects</label>
-            <label for="bep"><input type="checkbox" class="red" name="bep" id="bep">Back-end Projects</label>
-            <label for="dv"><input type="checkbox"  class="red" name="dv" id="dv">Data Visualization</label>
-            <label for="chal"><input type="checkbox" class="red" name="chal" id="chal">Challange</label>
-            <label for="osc"><input type="checkbox" class="red" name="osc" id="osc">Open Source Community</label>
-            <label for="ghr"><input type="checkbox" class="red" name="ghr" id="ghr">Gitter help rooms</label>
-            <label for="videos"><input type="checkbox" class="red" name="videos" id="videos">Videos</label>
-            <label for="cm"><input type="checkbox" class="red" name="cm" id="cm">City Meetups</label>
-            <label for="wiki"><input type="checkbox" class="red" name="wiki" id="wiki">Wiki</label>
-            <label for="forum"><input type="checkbox" class="red" name="forum" id="forum">Forum</label>
-            <label for="ac"><input type="checkbox" class="red" name="ac" id="ac">Additional Courses</label>
+            <label for="fep"><input type="checkbox" class="red" name="fep" id="fep"> Front-end Projects</label>
+            <label for="bep"><input type="checkbox" class="red" name="bep" id="bep"> Back-end Projects</label>
+            <label for="dv"><input type="checkbox"  class="red" name="dv" id="dv"> Data Visualization</label>
+            <label for="chal"><input type="checkbox" class="red" name="chal" id="chal"> Challange</label>
+            <label for="osc"><input type="checkbox" class="red" name="osc" id="osc"> Open Source Community</label>
+            <label for="ghr"><input type="checkbox" class="red" name="ghr" id="ghr"> Gitter help rooms</label>
+            <label for="videos"><input type="checkbox" class="red" name="videos" id="videos"> Videos</label>
+            <label for="cm"><input type="checkbox" class="red" name="cm" id="cm"> City Meetups</label>
+            <label for="wiki"><input type="checkbox" class="red" name="wiki" id="wiki"> Wiki</label>
+            <label for="forum"><input type="checkbox" class="red" name="forum" id="forum"> Forum</label>
+            <label for="ac"><input type="checkbox" class="red" name="ac" id="ac"> Additional Courses</label>
 
             <p>Any commemnts or suggestions?</p>
-            <textarea name="comment" class="inp" id="comment" cols="30" rows="10" placeholder="Enter your comment here..."></textarea>
+            <textarea name="comment"  id="comment" placeholder="Enter your comment here..."></textarea>
 
             <input type="submit" value="Submit">
         </form>
