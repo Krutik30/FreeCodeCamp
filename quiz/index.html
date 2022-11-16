@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+</head>
+<body>
+    <nav>
+        <span>freeCodeCamp()</span>
+        <span>HTML/CSS Quiz</span>
+        <span>INFO</span>
+        <span>HTML</span>
+        <span>CSS</span>
+    </nav>
+    <header>
+        <h1>Student Info</h1>
+    </header>
+    <hr>
+    <section>
+        <form action="">
+            <label for="name">Name: <input type="text" id="name"></label>
+            <label for="email">Email: <input type="email" id="email"></label>
+            <label for="dob">D.O.B: <input type="date" id="dob"></label>
+        </form>
+    </section>
+
+    <section>
+        <h1>HTML</h1>
+        <hr>
+
+        <h2>Question #1</h2>
+        <div>
+            <p>The legend element represents a caption for the content of its parent fieldset element</p>
+            <label for="true1"><input type="radio" name="radio1" id="true1"> True</label>
+            <label for="false1"><input type="radio" name="radio1" id="false1"> False</label>
+        </div>
+        <h2>Question #2</h2>
+        <div>
+            <p>A label element nesting an input element is required to have
+                 a for attribute with the same value as the input's id</p>
+            <label for="true2"><input type="radio" name="radio2" id="true2">True</label>
+            <label for="false2"><input type="radio" name="radio2" id="false2">False</label>
+        </div>
+    </section>
+    <section>
+        <h1>CSS</h1>
+        <hr>
+
+        <div>
+            <p>Are you an frontend devloper?</p>
+            <select name="drop" id="fd">
+                <option value="1">Select an option</option>
+                <option value="2">Yes</option>
+                <option value="3">No</option>
+            </select>
+            <p>Do you have any question:</p>
+            <textarea name="box" id="box" cols="30" rows="10" placeholder="Who is flexbox..."></textarea>
+        </div>
+    </section>
+    
+        <button type="submit" id="sub" >Submit</button>
+</body>
+</html>
