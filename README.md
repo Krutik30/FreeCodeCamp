@@ -20,3 +20,11 @@ https://krutik30.github.io/FreeCodeCamp/surveyform/
 
 https://krutik30.github.io/FreeCodeCamp/tribute-page/
 
+6) Cafe menu:
+
+https://krutik30.github.io/FreeCodeCamp/cafe%20menu/
+
+7) Balance sheet:
+
+https://krutik30.github.io/FreeCodeCamp/balance%20sheet/
+
