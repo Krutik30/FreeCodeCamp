@@ -184,3 +184,122 @@ function isLess(a, b) {
   
   
   isLess(10, 15);
+
+  // function of cards
+
+  let count = 0;
+
+function cc(cards) {
+  // Only change code below this line
+  let a ;
+  if(cards >= 2 && cards <= 6)
+    count++;
+    
+  else if(cards == 10 || cards == 'J' || cards == 'Q' || cards == 'K' || cards == 'A')
+    count--;
+
+  a = "Hold";
+    if(count > 0)
+      a = "Bet"
+
+    return count+" "+a
+  // Only change code above this line
+}
+
+cc(2); cc(3); cc(7); cc('K'); cc('A');
+
+
+// defining objects
+
+const myDog = {
+    name: "chut",
+    legs : 4,
+    tails: 1,
+    friends: ["humans","doggy style"]
+
+};
+
+
+// accessing object
+
+// Setup
+const testObj = {
+  "hat": "ballcap",
+  "shirt": "jersey",
+  "shoes": "cleats"
+};
+
+const hatValue = testObj.hat;      
+const shirtValue = testObj.shirt;    
+
+
+// Setup
+testObj = {
+  "an entree": "hamburger",
+  "my side": "veggies",
+  "the drink": "water"
+};
+
+const entreeValue = testObj["an entree"];   
+const drinkValue = testObj["the drink"];    
+
+// Setup
+testObj = {
+  12: "Namath",
+  16: "Montana",
+  19: "Unitas"
+};
+
+const playerNumber = 16;  
+const player = testObj[playerNumber];
+
+
+// function me object create karke if...else ke bina matching values get kar sakte hai
+
+function phoneticLookup(val) {
+  let result = "";
+
+   var lookup = {
+    "alpha": "Adams",
+    "bravo": "Boston",
+    "charlie": "Chicago",
+    "delta": "Denver",
+    "echo": "Easy",
+    "foxtrot": "Frank"
+    };
+    result = lookup[val];
+
+  return result;
+}
+
+phoneticLookup("charlie");
+
+//passing the whole object in function this may be can help us for changing attributes in css
+
+function checkObj(obj, checkProp) {
+
+  let b = obj.hasOwnProperty(checkProp);
+    
+  if(b)
+    return obj[checkProp];
+  else
+    return "Not Found";
+  }
+
+
+  // complex nested object accessing by dot and brackets
+
+  const myStorage = {
+    "car": {
+      "inside": {
+        "glove box": "maps",
+        "passenger seat": "crumbs"
+       },
+      "outside": {
+        "trunk": "jack"
+      }
+    }
+  };
+  
+  const gloveBoxContents = myStorage.car.inside["glove box"];
+  console.log(gloveBoxContents);
