@@ -303,3 +303,134 @@ function checkObj(obj, checkProp) {
   
   const gloveBoxContents = myStorage.car.inside["glove box"];
   console.log(gloveBoxContents);
+
+
+  // accesing nested object 
+
+  const myPlants = [
+    {
+      type: "flowers",
+      list: [
+        "rose",
+        "tulip",
+        "dandelion"
+      ]
+    },
+    {
+      type: "trees",
+      list: [
+        "fir",
+        "pine",
+        "birch"
+      ]
+    }
+  ];
+  
+  const secondTree = myPlants[1].list[1];
+
+
+  // updating nested objects by function
+
+const recordCollection = {
+  2548: {
+    albumTitle: 'Slippery When Wet',
+    artist: 'Bon Jovi',
+    tracks: ['Let It Rock', 'You Give Love a Bad Name']
+  },
+  2468: {
+    albumTitle: '1999',
+    artist: 'Prince',
+    tracks: ['1999', 'Little Red Corvette']
+  },
+  1245: {
+    artist: 'Robert Palmer',
+    tracks: []
+  },
+  5439: {
+    albumTitle: 'ABBA Gold'
+  }
+};
+
+function updateRecords(records, id, prop, value) {
+  const album = records[id];
+  if(value === "")
+    delete album[prop];
+  else if(prop != "tracks")
+    album[prop] = value;
+  else{
+    album["tracks"] = album["tracks"] || [];
+    album["tracks"].push(value);
+  } 
+  return records;
+}
+
+updateRecords(recordCollection, 5439, 'artist', 'ABBA');
+
+// looping structure 
+
+const myArray = [];
+
+
+let i = 5;
+
+while(i >= 0){
+  myArray.push(i);
+  i--;
+}
+
+console.log(myArray);
+
+//for loop
+
+for(let i = 1;i <= 5 ; i++)
+{
+  myArray.push(i);
+}
+
+console.log(myArray);
+
+
+// for loop 
+
+const myArr = [2, 3, 4, 5, 6];
+let total = 0;
+for(let i=0;i<myArr.length;i++)
+{
+  total += myArr[i];
+}
+
+
+function multiplyAll(arr) {
+  let product = 1;
+  for(let i=0;i<arr.length;i++)
+  {
+    for(let j=0;j<arr[i].length;j++)
+    {
+      product *= arr[i][j];
+    }
+  }
+  return product;
+}
+
+multiplyAll([[1, 2], [3, 4], [5, 6, 7]]);
+
+
+
+i = 10;
+
+do  {
+  myArray.push(i);
+  i++;
+}while(i>11);
+
+
+// sum by recursion 
+
+function sum(arr, n) {
+  if(n <= 0)
+     return 0;
+  else
+    return arr[n-1]+sum(arr , n-1);
+}
+
+console.log(sum([2, 3, 4], 1));
