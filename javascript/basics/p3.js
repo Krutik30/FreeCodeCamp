@@ -434,3 +434,15 @@ function sum(arr, n) {
 }
 
 console.log(sum([2, 3, 4], 1));
+
+function fibbo(n)
+{
+  for(let i=0;i<=n;i++)
+  {
+    if(i == 0 || i == 1)
+      return 1;
+
+    else  
+      return fibbo(n-1)+fibbo(n-2);
+  }
+}
