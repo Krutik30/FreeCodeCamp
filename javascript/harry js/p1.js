@@ -5,8 +5,8 @@ console.log("Guess the Number\n");
 guess = prompt("Enter a number between 1 and 100");
 ++chances; 
 
+guess = Number.parseInt(guess);
 do {
-  guess = Number.parseInt(guess);
 
   if (guess > number) {
     console.log("Number entered is greater");
@@ -26,5 +26,6 @@ do {
 
 } while (guess != number); 
 
+console.log("yahi hai right choice baby !!!")
 let score = 100 - chances; 
 console.log("\nCongratulations!! aap jit gaye...\nYour final score is", score);
