@@ -14,3 +14,47 @@ class Thermostat {
   let temp = thermos.temperature; 
   thermos.temperature = 26;
   temp = thermos.temperature; 
+
+
+  // exporting function , variables ..
+  export const uppercaseString = (string) => {
+    return string.toUpperCase();
+  }
+  
+  export const lowercaseString = (string) => {
+    return string.toLowerCase()
+  }
+
+  // importing function
+
+  import {uppercaseString , lowercaseString} from './string_functions.js';
+
+uppercaseString("hello");
+lowercaseString("WORLD!");
+
+import * as stringFunctions from "./string_functions.js";
+
+stringFunctions.uppercaseString("hello");
+stringFunctions.lowercaseString("WORLD!");
+
+//making javascript promise
+const makeServerRequest = new Promise((resolve, reject) => {
+  
+  let responseFromServer;
+    
+  if(responseFromServer) {
+    resolve("We got the data");
+  } else {  
+    reject("Data not received");
+  }
+});
+
+
+makeServerRequest.then(result =>{
+  console.log(result);
+});
+
+
+makeServerRequest.catch(error =>{
+  console.log(error);
+});
