@@ -254,3 +254,40 @@ result = myRegex.test(myString); // Change this line
 // After passing the challenge experiment with myString and see how the grouping works
 
 console.log(result);
+
+// apan ese ek string get karli ab dusri bar vahi mile constrain se
+// ye posible nai hai isi lie \1 hai hamare pass
+// \1 kya karta hai ke ye get ki hui string store kar leta hai
+// or ye regex me represent krta hai match me dono store hota hai
+
+let repeatNum = "42 42 42";
+let reRegex = /^(\d+) \1 \1$/; 
+result = reRegex.test(repeatNum);
+let result2= repeatNum.match(reRegex);
+console.log(result2);
+
+console.log(result);
+
+// Searching is useful. However, you can make searching even more powerful
+// when it also changes (or replaces) the text you match.
+// apan ke pas abhi string hai uske regex me store bhi kar liya hai
+// simple badlav to ho jaye par strings ke parts ko ghumana ho to
+// $ sign se kar sakte hai 
+
+let str = "one two three";
+let fixRegex = /(\w+)\s(\w+)\s(\w+)/; 
+let replaceText = "$3 $2 $1"; 
+result = str.replace(fixRegex, replaceText);
+
+console.log(result);
+
+// apane replace karenge agle pichle vadheli space ko nikal ke
+// to flag - g is mandatory (me bhul gaya)
+// agala ^ or pichala $ and dono select karne ke |
+// replace character "" as nothing
+
+let hello = "   Hello, World!  ";
+let wsRegex = /(^\s+)|(\s+$)/g; 
+result = hello.replace(wsRegex,"") ; 
+
+console.log(result);
