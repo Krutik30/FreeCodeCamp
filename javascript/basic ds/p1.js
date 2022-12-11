@@ -92,6 +92,7 @@ function quickCheck(arr, elem) {
   console.log(quickCheck(['squash', 'onions', 'shallots'], 'mushrooms'));
 
   // row push karo baki to vahi check karke push karna
+
   function filteredArray(arr, elem) {
     let newArr = [];
     for(let i=0;i<arr.length;i++)
@@ -114,7 +115,10 @@ function quickCheck(arr, elem) {
 ];
 
 //object
-
+// object ke andar array number string wo sab to store kar sakte hai
+// par usko indexing karke access karne se a66a usko key de do
+// wo jo attribute dikha raha hai usko key bana do or data save karo
+// usko bracket se access kar sakte hai
 let foods = {
   apples: 25,
   oranges: 32,
@@ -128,6 +132,8 @@ foods["strawberries"] = 27;
 console.log(foods);
 
 // dot notation
+//breackets me string ke jese pass karna padta hai 
+// dot me .item karke 
 
 let userActivity = {
   id: 23894201352,
@@ -141,6 +147,9 @@ userActivity.data.online = 45
 console.log(userActivity);
 
 // while returning bracket notation is more presice
+// kyu ki pass karne ke time pe string ki tarah kiya hai 
+// like wo quote ke andar hai to . notation nai use kar sakte
+// yaha isi lie bracket is important.
 
 let foods = {
   apples: 25,
@@ -158,6 +167,9 @@ function checkInventory(scannedItem) {
 console.log(checkInventory("apples"));
 
 // delete keyword 
+// for object there is key word delete and 
+// it can be access by any of notation
+// key word ko object se notify karke wo data delete kar sakte hai
 
 let foods = {
   apples: 25,
@@ -172,3 +184,136 @@ delete foods.oranges;
 delete foods.plums;
 delete foods.strawberries;
 console.log(foods);
+
+// neseted obj hai 
+// abhi hame sirf check karna hai ke key andar hai ki nai
+// to uske liye hai in or hasOwnProperty()
+// ye boolean return karte hai
+// isko if ke andar bhi use kar sakte hai
+// yaa direct bhi kar hi sakte hai
+let users = {
+  Alan: {
+    age: 27,
+    online: true
+  },
+  Jeff: {
+    age: 32,
+    online: true
+  },
+  Sarah: {
+    age: 48,
+    online: true
+  },
+  Ryan: {
+    age: 19,
+    online: true
+  }
+};
+function isEveryoneHere2(userObj) {
+  
+  if (
+      userObj.hasOwnProperty("Alan") &&
+      userObj.hasOwnProperty("Jeff") &&
+      userObj.hasOwnProperty("Sarah") &&
+      userObj.hasOwnProperty("Ryan")
+    ) {
+      return true;
+    }
+    return false;
+}
+function isEveryoneHere(userObj) {
+    return ["Alan", "Jeff", "Sarah", "Ryan"].every(check =>
+    check in userObj
+  );
+}
+
+console.log(isEveryoneHere(users));
+
+// nested object ko kese handle kare
+// usko compare kar sakte hai
+// vese count() function se kar sakte par true false condition check karni hai na 
+// yaha === se compare karna chahie
+const user = {
+  Alan: {
+    online: false
+  },
+  Jeff: {
+    online: true
+  },
+  Sarah: {
+    online: false
+  }
+}
+
+function countOnline(usersObj) {
+  let re=0;
+  for(let user in usersObj)
+    if(usersObj[user]["online"] === true){
+      re++;
+    }
+    return re;
+}
+
+console.log(countOnline(users));
+
+// apne pass Object.keys() karke function hai
+// ye function object me jitne keys hai uska array return karta hai
+// uske andar jo bhi ho object array wo ku6 nai
+// but jo key hai usko represent karta array return karta hai;
+
+users = {
+  Alan: {
+    age: 27,
+    online: false
+  },
+  Jeff: {
+    age: 32,
+    online: true
+  },
+  Sarah: {
+    age: 48,
+    online: false
+  },
+  Ryan: {
+    age: 19,
+    online: true
+  }
+};
+
+function getArrayOfUsers(obj) {
+    return Object.keys(obj);
+}
+
+console.log(getArrayOfUsers(users));
+
+// yaha function me nested object ke andar ek array hai
+// usko access karna hai usme value push karni hai
+// or uss updated array ko function se return karna hai
+// ek sath do kam karna hai
+
+user = {
+  name: 'Kenneth',
+  age: 28,
+  data: {
+    username: 'kennethCodesAllDay',
+    joinDate: 'March 26, 2016',
+    organization: 'freeCodeCamp',
+    friends: [
+      'Sam',
+      'Kira',
+      'Tomo'
+    ],
+    location: {
+      city: 'San Francisco',
+      state: 'CA',
+      country: 'USA'
+    }
+  }
+};
+
+function addFriend(userObj, friend) {
+  userObj.data.friends.push(friend);
+  return userObj.data.friends;
+}
+
+console.log(addFriend(user, 'Pete'));
