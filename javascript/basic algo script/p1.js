@@ -198,3 +198,58 @@ function bouncer1(arr) {
 function bouncer(arr) {
   return arr.filter(Boolean);
 }
+
+// yaha hai simple sort karna hai array ko 
+// or fir index dhundh ke return khatam
+function getIndexToIns(arr, num) {
+  arr.sort((a,b) => a-b);
+  // but idhar idhar ku6 gadabad hai
+  // yaha hamne sort me arg kyu pass ki as we know .sort() se kam chal jata ne
+  // arr.sort() bhi to vahi deta jo hame chahie 
+  console.log(arr);
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] >= num) return i;
+  }
+  return arr.length;
+}
+// nahi problem hai jese hi bina arg ham sort karenge
+// ye string samaj ke sort karega
+// isi lie hame chahie callback function 
+// jo sath sath arr ke bacho ko anko me badal sake
+// ham (a,b) => a-b function banaya ye kya karta hai
+// arre ye array ke bacho ko data type conversion se bachata hai 
+// a-b se ham type conversion me jo string bana usko firse number bana de rahe hai
+console.log(getIndexToIns([5, 3, 20, 3], 5));
+
+// ye function fcc valo ko satify nai kar raha
+// yaha hame letter he ke nai wo check karna hai (wo isme nai ho raha sirf)
+function mutation(arr) {
+  return arr[0].toLowerCase().includes(arr[1].toLowerCase());
+}
+console.log(mutation(["HeLlo", "hello"]));
+
+// ye hamne jo compare karna hai uske tukade kiye
+function mutation(arr) {
+  let test = arr[1].toLowerCase().split(""); // yaha lower me karke ek ek letter ko alag kiya
+  console.log(test);
+  for(let i=0;i<test.length;i++)
+  {
+    if(arr[0].toLowerCase().indexOf(test[i]) < 0) // fir to index of hai hi check kar liya 
+      return false                               // or jo chahe return kiya
+  }
+  return true;
+}
+console.log(mutation(["HeLlo", "hello"]));
+
+// abhi slice karke size jitna array bana ke store karenge
+// fir splice karke pele array mese utna nikal denge
+function chunkArrayInGroups(arr, size) {
+  let arr1=[];
+  let kitne = arr.length/size; // arr ki length direct nai rakhte wo badalti hai
+  for(let i=0;i<kitne;i++){
+    arr1.push(arr.slice("",size));
+    arr.splice(0,size);
+  }
+  return arr1;
+}
+console.log(chunkArrayInGroups([0, 1, 2, 3, 4, 5, 6], 3))
