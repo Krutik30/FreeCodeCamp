@@ -74,3 +74,47 @@ function Bird(name) {
   }
   Dog3.prototype.numLegs = 4;
   let beagle = new Dog3("Snoopy");
+
+  // alag se add kiya hua property reta alag hi hai
+  // exit kare access thay pan property print na thay hasown na batave
+  function Dog(name) {
+    this.name = name;
+  }
+  Dog.prototype.numLegs = 4;
+  beagle = new Dog("Snoopy");
+  ownProps = [];
+  let prototypeProps = [];
+  for(let prop in beagle)
+  {
+    if(beagle.hasOwnProperty(prop))
+      ownProps.push(prop);
+    else
+      prototypeProps.push(prop);
+  }
+
+// instanceof() function bhi check karke de deta hai
+// baki .constructor operator 
+function Dog(name) {
+  this.name = name;
+}
+function joinDogFraternity(candidate) {
+  if(candidate.constructor === Dog)
+    return true;
+  else
+    return false;
+}
+
+// prototype me function add kara
+// eat() karke bhi access hota hai
+function Dog(name) {
+  this.name = name;
+}
+Dog.prototype = {
+  numLegs: 4,
+  eat: function(){
+    console.log("BHav bhav");
+  },
+  describe: function(){
+    console.log("My name is "+this.name+" BHAv?");
+  }
+};
