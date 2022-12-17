@@ -73,7 +73,7 @@ function Bird(name) {
     this.name = name;
   }
   Dog3.prototype.numLegs = 4;
-  let beagle = new Dog3("Snoopy");
+  beagle = new Dog3("Snoopy");
 
   // alag se add kiya hua property reta alag hi hai
   // exit kare access thay pan property print na thay hasown na batave
@@ -119,7 +119,8 @@ Dog.prototype = {
   }
 };
 
-
+// constructor as a key 
+// us object ke prototype ko overwrite karne se rokta hai
 function Dog(name) {
   this.name = name;
 }
@@ -134,60 +135,95 @@ Dog.prototype = {
   }
 };
 
+// agar koi bhi object function se create hua hai
+// to uska prototype he ke nai wo check karne ke lie
+// isprototype function
 function Dog(name) {
   this.name = name;
 }
 beagle = new Dog("Snoopy");
 Dog.prototype.isPrototypeOf(beagle);
 
+// jiska koi nai uska bhi bhagwan hota hai
+// bas esa scene hai ke Dog hai wo var banaye uska prototype hai
+// yaha beagle ka malik Dog 
+// par Object hai wo sabhi object ya uske function ke prototype ka 
+// Godfather hai
+// Object.prototype hai wo kisi bhi prototype ko darrsata hai
+// isi lie to ham object. lka use karte hai function ke sath
 function Dog(name) {
   this.name = name;
 }
-
 beagle = new Dog("Snoopy");
-
 Dog.prototype.isPrototypeOf(beagle);  // yields true
-
-// Fix the code below so that it evaluates to true
 Object.prototype.isPrototypeOf(Dog.prototype);
 
-
+// pele to object ke function banaye 
+// abhi wo function me bhi repeatedly data likhna pad raha hai
+// to wo data nikalke 
+// us function ke prototype me ham add kar denge hamara data
+// abhi naye function ko call karke object banane vale function banayenge
 function Cat(name) {
   this.name = name;
 }
-
-Cat.prototype = {
-  constructor: Cat,
-  eat: function() {
-    console.log("nom nom nom");
-  }
-};
-
 function Bear(name) {
   this.name = name;
 }
-
-Bear.prototype = {
-  constructor: Bear,
-  eat: function() {
-    console.log("nom nom nom");
-  }
-};
-
 function Animal() { 
 
 }
-
 Animal.prototype = {
   constructor: Animal,
   eat: function() {
     console.log("nom nom nom");
   }
 };
-
 Cat.prototype = {
   constructor: Cat
 }
 Bear.prototype = {
   constructor: Bear
 }
+
+// abhi prototype ko bhi prototype banake banayenge
+// usko Object me store karenge
+// access kese karenge Animal.prototype
+function Animal() { }
+Animal.prototype = {
+  constructor: Animal,
+  eat: function() {
+    console.log("nom nom nom");
+  }
+};
+let duck = Object.create(Animal.prototype); 
+let beagle = Object.create(Animal.prototype); 
+
+// ab samje ke ek supreme fucntion banaya jo object hai
+// wo niche 6ote 6ote function banata hai jo khud object prototype hai
+// or wo object bana rahe he
+function Animal() { }
+Animal.prototype = {
+  constructor: Animal,
+  eat: function() {
+    console.log("nom nom nom");
+  }
+};
+duck = Object.create(Animal.prototype); 
+beagle = Object.create(Animal.prototype); 
+
+// abhi ise ghum ghum ke object banayenge to 
+// pta chalna hi hai ke native kaha se aayaa hai
+// par ham dhoka karna hai to ham constructor likh denge ke uska name kya rakhe 
+// jo ham likhnge wo dikhega
+function Animal() { }
+function Bird() { }
+function Dog() { }
+
+Bird.prototype = Object.create(Animal.prototype);
+Dog.prototype = Object.create(Animal.prototype);
+Bird.prototype.constructor = Bird;
+Dog.prototype.constructor = Dog;
+duck = new Bird();
+beagle = new Dog();
+console.log(beagle.constructor);
+console.log(duck.constructor);
