@@ -227,3 +227,59 @@ duck = new Bird();
 beagle = new Dog();
 console.log(beagle.constructor);
 console.log(duck.constructor);
+
+// ye prototype bana ke uska function and fir usse object
+// par abhi first prototype jo object banata hai usme ku6 add krna hai
+// par wo main function ko effect na kare
+// to us functino ke prototype ko access karke function or jo detail dalni hai add kardo
+// main fucntion ya prototype wo return nai karega
+function Animal() { }
+Animal.prototype.eat = function() {console.log("nom nom nom");};
+function Dog() { }
+Dog.prototype = Object.create(Animal.prototype);
+Dog.prototype.bark = function() {console.log("Woof!");};
+Dog.prototype.constructor = Dog;
+beagle = new Dog();
+beagle.eat();
+beagle.bark();
+
+// pichli bar ke jese hi edit kare to main fucntion me nai
+// jo subfunction hai usme edit karna 
+function Bird() { }
+
+Bird.prototype.fly = function() { return "I am flying!"; };
+
+function Penguin() { }
+Penguin.prototype = Object.create(Bird.prototype);
+Penguin.prototype.constructor = Penguin;
+
+Penguin.prototype.fly = function(){
+  return "Alas, this is a flightless bird.";
+}
+
+let penguin = new Penguin();
+console.log(penguin.fly());
+
+// abhi ku6 function me edit karna hai ku6 me nai
+// to uske lie bhi hamne function bana diya ke
+// edit karne ke lie bhi repeat na krna pade
+// 
+let bird = {
+  name: "Donald",
+  numLegs: 2
+};
+
+let boat = {
+  name: "Warrior",
+  type: "race-boat"
+};
+
+let glideMixin = function(obj){
+  obj.glide = function(){
+    console.log("tair raha hu!");
+  }
+}
+glideMixin(bird);
+glideMixin(boat);
+
+// 
