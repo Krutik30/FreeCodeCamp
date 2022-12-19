@@ -282,4 +282,51 @@ let glideMixin = function(obj){
 glideMixin(bird);
 glideMixin(boat);
 
-// 
+// abhi ham methods ya data ko ese prototype me banayenge to
+// easily changable hai
+// to constructor ke andar hi ham method ko instroduce kare or return kare 
+// jise koi change na kar sakte or wo detail object ko bnane pe usko nai milti
+// object ka part nai hai
+
+function Bird() {
+  let weight = 15;
+
+  this.getWeight = function(){
+    return weight;
+  };
+}
+let ducky = new Bird();
+ducky.getWeight();
+
+// makeNest name ka function banake usko call kar sakte hai
+function makeNest() {
+  console.log("A cozy nest is ready");
+}
+// isi tarah ek direct call function method hai functino khatam hone ke bad direct execute ho jata hai
+// Immediately Invoked Function Expression (IIFE) 
+// function ke end me () lagane se direct excute ho jata hai
+// c languege me inline function hai vese
+(function (){
+  console.log("A cozy nest is ready");
+})();
+
+// module is created when methods are define in prototypes 
+// and prototypes are asign to a function which can manipulate constructors or make objects
+// like wise iife se direct execute karke object create kare ja sakte hai
+let funModule = (function() {
+  return {
+    isCuteMixin: function(obj) {
+      obj.isCute = function() {
+        return true;
+      };
+    },
+    singMixin: function(obj) {
+      obj.sing = function() {
+        console.log("Singing to an awesome tune");
+      };
+    }
+  };
+})();
+duck = {};
+funModule.singMixin(duck);
+duck.sing();
