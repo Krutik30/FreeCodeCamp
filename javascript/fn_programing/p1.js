@@ -423,3 +423,73 @@ console.log(filteredList);
 //   .filter(movie => movie.imdbRating >= 8.0)
 //   .map(movie => ({ title: movie["Title"], rating: movie["imdbRating"] }));
 
+Array.prototype.myFilter = function(callback) {
+  const newArray = [];
+  for (let i = 0; i < this.length; i++) {
+    if (callback(this[i], i, this) == true) {
+      newArray.push(this[i]);
+    }
+  }
+  return newArray;
+};
+
+// filter function kya karta hai
+// ke wo callback function ki condition check karta hai
+// if(true) then wo array me push ho jayegi
+// and true nai hai to ignore karo bas 
+// callback me element index and array atta hai args 
+
+// hame banana hota to remove karke bhi kar skte hai
+// if (callback(this[i], i, this) == false) {
+//   delete newArray[i]; }
+// yaha splice ke use se thodi gadbad ho rahi hai indexing bigad raha hai...
+
+function sliceArray(anim, beginSlice, endSlice) {
+  // Only change code below this line
+  let newArray = [];
+  for(let i=beginSlice;i<endSlice;i++)
+    newArray.push(anim[i]); // slice method bhi bana di
+  return newArray;
+  // Only change code above this line
+}
+
+inputAnim = ["Cat", "Dog", "Tiger", "Zebra", "Ant"];
+console.log(sliceArray(inputAnim, 1, 3));
+
+function sliceArray(anim, beginSlice, endSlice) {
+  let newArray = anim.slice(beginSlice,endSlice);
+   // slice karke to assan hai bina fucntion ke bhi return kar hi raha hai
+  return newArray;
+}
+
+const inputAnim = ["Cat", "Dog", "Tiger", "Zebra", "Ant"];
+console.log(sliceArray(inputAnim, 1, 3));
+
+// slice karke splice return karna hai asali vale me badlav na ho ese
+// to slice karte naya array banta hai wo return kardo 
+// ulta karne ka jo chahie wo nai jo nai chahie use slice karo
+function nonMutatingSplice(cities) {
+  // Only change code below this line
+  return cities.slice(0,3);
+
+}
+
+const inputCities = ["Chicago", "Delhi", "Islamabad", "London", "Berlin"];
+console.log(nonMutatingSplice(inputCities));
+
+function nonMutatingConcat(original, attach) {
+  // Only change code below this line
+  // let newArr=[];
+  // newArr = newArr.concat(original);
+  // newArr = newArr.concat(attach);
+  // console.log(newArr);
+  // return newArr; is tarah se bhi concat kar sakte hai par 
+  // concat array return karta hai mutant nai karta hai
+  // so direct likh sakte hai
+  return original.concat(attach);
+  // Only change code above this line
+}
+
+const first = [1, 2, 3];
+const second = [4, 5];
+console.log(nonMutatingConcat(first, second));
