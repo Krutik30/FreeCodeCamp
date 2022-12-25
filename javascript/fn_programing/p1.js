@@ -654,3 +654,64 @@ const squareList = arr => {
 // jo true flase return karta hai
 const squaredIntegers = squareList([-3, 4.8, 5, 3, -3.2]);
 console.log(squaredIntegers);
+
+function alphabeticalOrder(arr) {
+  return arr.sort();
+}
+// bola hai alphabetic me karna hai fir kya tention hai sort function ese hi to karta hai
+// unicode values ke upar depend karta hai
+alphabeticalOrder(["a", "d", "c", "a", "z", "g"]);
+
+function callback(a, b) {
+  return a === b ? 0 : a < b ? 1 : -1;
+}
+// as a call back function ye function ulti alphabetic me sort karta hai
+// isme same hai to koi kahi bhi rakh sakte hai
+// unicode compare hote hai
+// bada ho to return fir pehle a fir bhi 
+// or ulta ho to ulta hoga 
+
+// function(a, b) {
+//   return a - b
+// ye return me string ko numeric me convert kar deta hai
+// - operator numeric pe hi lagte hai
+
+const globalArray = [5, 6, 3, 2, 9];
+
+function nonMutatingSort(arr) {
+  // Only change code below this line
+  
+  return [].concat(arr).sort((a,b) => a-b);
+  // Only change code above this line
+}
+// concat karenge khali array leke ye vala arr usme concat karrenge 
+// ab hamre pass copy hai now usko sort kar sakte hai
+// concat ke ander pele ar rdal ke fir sort kara isi lie global vala nai change hua
+
+console.log(nonMutatingSort(globalArray));
+
+globalArray = [5, 6, 3, 2, 9];
+
+  // let newArr = [...arr].sort((a,b)=> a-b);
+  // return newArr;
+
+  // yaha ham pehle copy kar lenge fir sort kar denge...
+
+  function splitify(str) {
+    // Only change code below this line
+      return str.split(/\W/);
+    // yaha \W = [^A-Za-z0-9_];
+    // to space ke punctuation phoga to split kar dega
+    // Only change code above this line
+  }
+  
+  splitify("Hello World,I-am code");
+
+  function sentensify(str) {
+    return str.split(/\W/).join(" ");
+  }
+  // sentece thik karna hai to split krke array banao
+  // split punctuation thi and then join with " " space
+  console.log(sentensify("May-the-force-be-with-you"));
+
+  
