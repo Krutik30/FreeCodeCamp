@@ -714,4 +714,51 @@ globalArray = [5, 6, 3, 2, 9];
   // split punctuation thi and then join with " " space
   console.log(sentensify("May-the-force-be-with-you"));
 
-  
+  // Only change code below this line
+function urlSlug(title) {
+  return title
+  .toLowerCase()
+  .trim()
+  .split(/\s+/)
+  .join("-");
+}
+// pehle lowercase karke trim kardo
+// split karlo space dikhe vaha se array bana liya
+// ab hyfun se join kardo
+// Only change code above this line
+console.log(urlSlug("A Mind Needs Books Like A Sword Needs A Whetstone"));
+
+function checkPositive(arr) {
+  // Only change code below this line
+  return arr.every(num => num > 0);
+
+  // Only change code above this line
+}
+// every function callback pe kam karta hai
+// jo sabhi element ke lie true hoga to every true return karega
+// ek ke lie bhi false to pura false return hoga
+
+checkPositive([1, 2, 3, -4, 5]);
+
+function checkPositive(arr) {
+  // Only change code below this line
+  return arr.some((num) => num > 0);
+
+  // Only change code above this line
+}
+
+checkPositive([1, 2, 3, -4, 5]);
+// some() methode uska bhai ke ek bhi true hoga to true return karega
+// varna false sabhi false ho to
+
+function add(x) {
+  // Only change code below this line
+  return (y) => (z) => x+y+z;
+  // Only change code above this line
+}
+// function ke andar function ke andar function
+// ise ye fayada hota hai ke aapko ek sath arg nai deni padti 
+// aap ek ko store kar sakte hai fir wait karo dusri value mile tab function return hoga
+// aap .bind() se this bolke wait karva sakte hai ke abhi ye value badme deta hu
+// function ek dusre me copy hote honge sayad
+add(10)(20)(30);
