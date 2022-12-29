@@ -122,3 +122,13 @@ function sumAll(arr) {
   
   // source vala object jis colllection me ho 
   // use return karna hai
+
+  function spinalCase(str) {
+    return str
+      .split(/\s|_|(?=[A-Z])/)
+      .join("-")
+      .toLowerCase();
+  }
+  // space and capital letter se alag karne ke lie regex = /\s|_|(?=[A-Z])/
+  // fir join and then tolowercase()
+  console.log(spinalCase('This Is Spinal Tap'));
