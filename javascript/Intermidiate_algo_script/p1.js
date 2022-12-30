@@ -132,3 +132,183 @@ function sumAll(arr) {
   // space and capital letter se alag karne ke lie regex = /\s|_|(?=[A-Z])/
   // fir join and then tolowercase()
   console.log(spinalCase('This Is Spinal Tap'));
+
+  function translatePigLatin(str) {
+    let extraStr = "";
+    let vowel = ['a' , 'e' , 'i' , 'o' , 'u'];
+    let flag = true,i;
+    for(i=0;i<str.length;i++)
+    {
+      if(vowel.includes(str[i])) 
+      // pehle check kiya ke vowel hai to loop me se bahar nikalo
+        break;
+      else{
+        extraStr+=str[i]; 
+        // agar nai to agale vale const ko extra me le lo
+        flag = false;
+        // or janda farka do ke ab isme badlav aa gaya hai
+      }
+    }
+    str = str.slice(i);
+    // ye slice hame karna pada ke age se character nikalne hai na
+    // to i to hame collect kiya uspe se 
+    // or vaha se jitni string ho slice le ke usi ko de de
+    if(flag)
+      extraStr+="w";
+      // agar janda farka nai fota to w bhi add kar dene ka
+    extraStr+="ay";
+    // ye to add karna hi hai
+    return (str+extraStr);
+    // baki sab aake concat karke return karna hai bas
+  }
+  
+  console.log(translatePigLatin("consonant"));
+
+  function myReplace(str, before, after) {
+    // Check if first character of argument "before" is a capital or lowercase letter and change the first character of argument "after" to match the case
+    if (/^[A-Z]/.test(before)) {
+      // regex banaya ke pehla (^)letter capital hai ki nai
+      after = after[0].toUpperCase() + after.substring(1);
+      // to after string ka pehla letter cap kardo
+    } else {
+      after = after[0].toLowerCase() + after.substring(1);
+      // to after string ka pehla letter small kardo
+  
+    }
+  
+    // return string with argument "before" replaced by argument "after" (with correct case)
+    return str.replace(before, after);
+  }
+  
+  function pairElement(str) {
+    let ans={
+      A:'T',
+      T:'A',
+      G:'C',
+      C:'G'
+    }
+    // dna ka pair hote hai 
+    // to key and its value se object bana liya 
+    // ab char dekh ke usko array me dalna hai
+    return str.split("").map(a => [a,ans[a]]);
+    // split se arrray me split karega str ko
+    // fir map se 1d se 2d me badlenge or element ko uske sathi se mila denge
+  }
+  
+  pairElement("GCG");
+
+  function fearNotLetter(str) {
+    for (let i = 0; i < str.length; i++) {
+      const charCode = str.charCodeAt(i);
+      // ham pehle ascii value unicode dhundh lenge
+      // usko compare karenge
+      if (charCode !== str.charCodeAt(0) + i) {
+        // current ke unnicode ko
+        // pehle vale + i unicode dono same na ho
+        // to wo char return kardo
+        return String.fromCharCode(charCode - 1);
+      }
+    }
+    // varna undefined to hai hi
+    // ku6 return na karo to bhi return undefined hota hai
+  }
+  
+  // test here
+  console.log(fearNotLetter("abce"));
+
+  function uniteUnique(arr) {
+    let arg = [...arguments];
+    // all arg me jitne array aaye wo save karne padenge
+    // 2d array banega
+    let ans = [];
+    for(let i=0;i<arg.length;i++)
+    {
+      for(let j=0;j<arg[i].length;j++)
+      {
+        if(!ans.includes(arg[i][j]))
+        // check karenge ke ans vala array bana rahe he 
+        // usme hame naye array mese add karna hai ki nai
+        // haan to push kardo 
+          ans.push(arg[i][j]);
+      }
+    }
+    return ans;
+    // or ans return kardo
+  }
+  
+  console.log(uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1]));
+  
+  // pehle array mese non repeating value daldo
+  // fir sab array mese repeat na hote hue element add karte chalo;
+
+  function convertHTML(str) {
+    const htmlEntities = {
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&apos;"
+    };
+    // html ki entities ko object me store karli
+    // char nikalke uske curresponding
+    // values dalke return kardo 
+    return str
+      .split("")
+      .map(entity => htmlEntities[entity] || entity)
+      .join("");
+  }
+  // map me jo badlna hai wo to object se badaldenge
+  // but dusra sab to vese ka vesa rakhna hai to 
+  // or me entity return kardo
+  // test here
+  console.log(convertHTML("Dolce & Gabbana"));
+
+
+  function sumFibs(num) {
+  let pichala = 0;
+  let abhika = 1;
+  let jochahie = 0;
+  while (abhika <= num) {
+    if (abhika % 2 !== 0) {
+      jochahie += abhika;
+    }
+    abhika += pichala;
+    pichala = abhika - pichala;
+  }
+// fibo ki tarah pehle do element define karke
+// usse fibo ki line banani hai
+// par as a twist jo odd number dikhe use khich ke apne sum me dalte jao
+// jochahie wo 6in lo
+// abhika jo hai wo possition dikhata hai ke isse zyada nai lane hame num me
+  return jochahie;
+}
+
+// test here
+console.log(sumFibs(4));
+
+function sumPrimes(num) {
+  let isPrime = Array(num + 1).fill(true);
+  // hame sieve ke tarah prime number dhundhne hai
+  // to c++ me to bool ka or defined size ka array ban jaega
+  // isme Array object ka use karke or usko bool value true fill karke is prime name ka array define kiya
+  // isprime is a boolean array
+  // isko batana padega ke 0 and 1 prime nai hai 
+  isPrime[0] = isPrime[1] = false;
+  for (let i = 2; i <= Math.sqrt(num); i++) {
+    if (isPrime[i]) {
+      // i has not been marked false -- it is prime
+      for (let j = i * i; j <= num; j += i)
+        isPrime[j] = false;
+    }
+    //pehla for loop bolega ke le is number ko check kar 
+    // jo pehle se ise prime bola gaya to iske sare avayav ko non-prime bana dega
+    // agar nai bola to to skip hi karna hai
+  }
+  let sum=0;
+  for(let i=0;i<=num;i++)
+    if(isPrime[i])
+      sum+=i;
+  return sum;
+}
+
+console.log(sumPrimes(10));
