@@ -312,3 +312,70 @@ function sumPrimes(num) {
 }
 
 console.log(sumPrimes(10));
+
+function smallestCommons(arr) {
+  // aage piche kar lete hai ke 6ota bada kon hai
+  const [min, max] = arr.sort((a, b) => a - b);
+  const numberDivisors = max - min + 1;
+  // kitne number honge hamare pass check karne ko
+  let upperBound = 1;
+  for (let i = min; i <= max; i++) {
+    upperBound *= i;
+  }
+  // sabse bada avayav dekh lete hai
+  // jo factorial aaega
+  // factorial or max ke bich me koi esa hoga jo max ke avayav me hi hoga
+  for (let multiple = max; multiple <= upperBound; multiple += max) {
+    // to max ka ek ek multiple check hoga min or max ke bich aane vale sabhi numbero se
+    // jo sabse pehle sare gun ke sath milega
+    let divisorCount = 0;
+    for (let i = min; i <= max; i++) {
+      // Count divisors
+      if (multiple % i === 0) {
+        divisorCount += 1;
+        // usko gin lo
+      }
+    }
+    if (divisorCount === numberDivisors) {
+      // yaha compare karo ke jitne diviser the sabhi se bhag sakte hai
+      return multiple;
+      // jo haan to max ke multiple ko return karvane ka hak hai
+    }
+  }
+}
+
+smallestCommons([1, 5]);
+
+function dropElements(arr, func) {
+  while (arr.length > 0 && !func(arr[0])) {
+    // pehle to arr ki length 0 na ho wo check karlo
+    // given function hai to wo jisme true return kare use rakhna hai
+    // isi lie ! mark ke jo nikalne hai nikal jae
+    // arr.shift karke aage se check karte karte nikalte jaege
+    arr.shift();
+  }
+  return arr;
+}
+
+// test here
+console.log(dropElements([1, 2, 3, 4], function(n) {
+  return n >= 3;
+}));
+
+function steamrollArray(arr) {
+  return arr
+    .toString()
+    .replace(",,", ",") // "1,2,,3" => "1,2,3"
+    .split(",") // ['1','2','3']
+    .map(function(v) {
+      if (v == "[object Object]") {
+        // bring back empty objects
+        return {};
+      } else if (isNaN(v)) {
+        // if not a number (string)
+        return v;
+      } else {
+        return parseInt(v); // if a number in a string, convert it
+      }
+    });
+}
