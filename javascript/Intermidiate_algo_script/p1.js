@@ -379,3 +379,87 @@ function steamrollArray(arr) {
       }
     });
 }
+
+function binaryAgent(str) {
+  return String.fromCharCode(
+    // fromCharCode se ascii value to char banaya
+    ...str.split(" ").map(function(char) {
+      // split se sab binary alg kardiye
+      return parseInt(char, 2);
+  // maping se binary to decimal kar diya
+    })
+  );
+}
+// ... here is mandatory array nai chalta numbers pass karna padta
+console.log(String.fromCharCode(65,89,69))
+console.log(parseInt("01000001",2));
+// test here
+binaryAgent(
+  "01000001 01110010 01100101 01101110 00100111 01110100 00100000 01100010 01101111 01101110 01100110 01101001 01110010 01100101 01110011 00100000 01100110 01110101 01101110 00100001 00111111"
+);
+
+function truthCheck(collection, pre) {
+  // Create a counter to check how many are true.
+  let counter = 0;
+  // Check for each object
+  for (let c in collection) {
+    // If it is has property and value is truthy
+    if (collection[c].hasOwnProperty(pre) && (collection[c][pre])) {
+      // collection me pre property hai ke nai
+      // && usko value di hui hai ke nai
+      counter++;
+    }
+  }
+  // Outside the loop, check to see if we got true for all of them and return true or false
+  return counter == collection.length;
+}
+
+truthCheck([{ name: "Quincy", role: "Founder", isBot: false }, { name: "Naomi", role: "", isBot: false }, { name: "Camperbot", role: "Bot", isBot: true }], "isBot");
+
+function addTogether() {
+  const [first, second] = arguments;
+  if (typeof(first) !== "number")
+    return undefined;
+  if (arguments.length === 1)
+    return (second) => addTogether(first, second);
+  if (typeof(second) !== "number")
+    return undefined;
+  return first + second;
+}
+
+console.log(addTogether(23,40));
+
+const Person = function(firstAndLast) {
+  let fullName = firstAndLast;
+
+  this.getFirstName = function() {
+    return fullName.split(" ")[0];
+  };
+
+  this.getLastName = function() {
+    return fullName.split(" ")[1];
+  };
+
+  this.getFullName = function() {
+    return fullName;
+  };
+
+  this.setFirstName = function(name) {
+    fullName = name + " " + fullName.split(" ")[1];
+  };
+
+  this.setLastName = function(name) {
+    fullName = fullName.split(" ")[0] + " " + name;
+  };
+
+  this.setFullName = function(name) {
+    fullName = name;
+  };
+};
+
+const bob = new Person("Bob Ross");
+console.log(bob.getFullName());
+
+// this karke constructor me properties add karni hai 
+// and prototype jo naye ban rahe he hai bs update karne hai
+
