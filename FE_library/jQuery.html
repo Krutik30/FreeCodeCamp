@@ -6,7 +6,54 @@
     $("button").addClass("animated");
     $(".btn").addClass("shake");
     $("#target1").addClass("btn-primary");
-    
+    // addClass() vala function selector me class add karne ke lie use hota hai
+    // idhar selector ko $("isme") likha jata hai
+    $("button").removeClass("btn-default");
+    // .removeClass() se class remove hota hai
+    $("#target1").css("color","red");
+    // .css() se css property me badlav hota hai ("konsi property","kya update");
+    $("#target1").prop("disabled",true);
+    // selector ki property me kuchh badlav karne ho to 
+    $("h3").html("<em>jQuery Playground</em>");
+    // . html se html me ferfar hota hai
+    // jese yaha hai wo add hoke em tag ke jese hi work karta hai
+    $("#target4").html("<em>#target4</em>")
+    $("#target4").remove();
+    // selector ko hi remove karna hai 
+    // .remove() ye selector vale tag ko hi nikal degi
+    $("#target4").appendTo("#left-well");
+    // tag ko yaha se vaha le jane ke lie .appendTo()
+    $("#target2").appendTo("#right-well");
+    // jise badlana hai.appendTo("jaha rakhna hai")
+    $("#target2").clone().appendTo("#right-well");
+    // .clone() wo clone duplicate copy banata hai
+    // or dono sath me matlab tag ko copy karne ke yaha se vaha le ja sakte hai
+    $("#target5").clone().appendTo("#left-well");
+    $("#left-well").parent().css("background-color", "blue");
+    // .parent() ji tag ko badl rahe hai uske parent ke sath kam karna hai
+    // tab ham is function ko use kar sakte hai
+    $("#target1").parent().css("background-color", "red");
+      // ku6 bhi property jo parent ki add karni ya badlni wo ho jaegi
+    $("#left-well").children().css("color", "blue")
+      // jese bap hota hai vese beta
+      // .children() ye prop of chidlren jiske sath kam kar rahe the 
+      // uske bache ko paresan karne me help kare
+    $("#right-well").children().css("color", "orange")
+    // bachche ke css ko badal sakte hai
+    $(".target:nth-child(3)").addClass("animated bounce");
+    // har bar itne a66e tarah se selector or id nai banai hongi to 
+    // positionning se try karenge
+    $(".target:nth-child(2)").addClass("animated bounce");
+    // nth child bolke kahenge ke haan 2nd child ko tang kar 
+    $(".target:odd").addClass("animated shake");
+    // odd or even bhi hota hai isme ke sare oddd jo parent target me hai sabko le dubo
+    $(".target:even").addClass("animated shake");
+    // yaha odd even to thik par ye bhi array ka bhai hai 0 se ginta hai
+    $("body").addClass("animated fadeOut");
+    // bahut hua ye query very ham ab body ko hi uda denge
+    $("body").addClass("animated hinge");
+    // query selector se ham ku6 bhi kar sakte hai hinge bhi khila sakte hai
+
     });
   </script>
   
