@@ -7,6 +7,8 @@
     .blog-post, h2 {
       color: $text-color;
     }
+    /* css me jese ham -- karke variable banate the  */
+    /* vese hi isme $ karke variable banake store kar sakte taki har jaga na badlna pade */
   </style>
   
   <h1 class="header">Learn Sass</h1>
@@ -25,17 +27,172 @@
 
   <style type='text/scss'>
     .blog-post {
-      h1 {
+      h1{
         text-align: center;
         color: blue;
       }
-      p {
+      p{
         font-size: 20px;
       }
     }
+    /* jese koi specific perticluar space ke lie hame us element ki css esi chahie
+        to chaining karke kar sakte hai jese div me hi h1 and p ki css ye rahegi bahar ke lie alag deni padegi */
   </style>
   
   <div class="blog-post">
     <h1>Blog Title</h1>
     <p>This is a paragraph</p>
   </div>
+
+  <style type='text/scss'>
+    @mixin border-radius($radius){
+      -webkit-border-radius: $radius;
+      -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+      border-radius: $radius;
+    }
+    /* jese ham function banate hai vese isme @mixin karke fucntion banate hai ke user se value get kare
+        user means here devloper hi par sabhi jaga us element ki css ko rakhne ke lie function type use  */
+    #awesome {
+      width: 150px;
+      height: 150px;
+      background-color: green;
+      @include border-radius(15px);
+      /* us function ko banane ke lie @mixin but call karne ke lie @include */
+    }
+  </style>
+  
+  <div id="awesome"></div>
+
+  <style type='text/scss'>
+  @mixin border-stroke($val){
+    @if $val == light{
+      border: 1px solid black;
+    }
+    @else if $val == medium{
+      border: 3px solid black;
+    }
+    @else if $val == heavy{
+      border: 6px solid black;
+    }
+    @else{
+      border: none;
+    }
+  }
+  /* // mast vala function koi button me jarur kam aaega */
+  @mixin text-effect($val) {
+  @if $val == danger {
+    color: red;
+  }
+  @else if $val == alert {
+    color: yellow;
+  }
+  @else if $val == success {
+    color: green;
+  }
+  @else {
+    color: black;
+  }
+}
+  /* here in this we have else if structure also 
+      jo variable sach nikale to wo run ho jaye
+      par ise most of function means mixin se hi bandh ke rakhna pageda varna variable inisilice karne me aae sirf */
+  #box {
+    width: 150px;
+    height: 150px;
+    background-color: red;
+    @include border-stroke(medium);
+  }
+</style>
+
+<div id="box"></div>
+
+<style type='text/scss'>
+  @for $j from 1 to 6{
+    .text-#{$j} {
+      font-size: 15px * $j;
+    }
+  }
+  /* yaha for loop chalti hai or ye 5 css  bana ke dega
+        @for $j from 1 through 5 se bhi ham for loop chala sakte hai
+        we have to and through two option
+*/
+</style>
+<p class="text-1">Hello</p>
+<p class="text-2">Hello</p>
+<p class="text-3">Hello</p>
+<p class="text-4">Hello</p>
+<p class="text-5">Hello</p>
+
+<style type='text/scss'>
+@each $color in blue, black, red {
+  .#{$color}-bg {background-color: $color;}
+}
+
+  div {
+    height: 200px;
+    width: 200px;
+  }
+</style>
+
+<div class="blue-bg"></div>
+<div class="black-bg"></div>
+<div class="red-bg"></div>
+
+$colors: (color1: blue, color2: red, color3: green);
+
+@each $key, $color in $colors {
+  .#{$color}-text {color: $color;}
+}
+/* arre ham isme object bhi bana sakte hai
+    vese objecct ko handle karne ke lie to $key banana jaruri hai
+    uske bina each vali loop ghuma ke dekhna? */
+
+
+    <style type='text/scss'>
+  $x: 1;
+  @while $x < 6{
+    .text-#{$x} {
+      font-size: 15px * $x;
+    }
+    $x : $x + 1;
+  }
+/* while loop */
+
+</style>
+
+<p class="text-1">Hello</p>
+<p class="text-2">Hello</p>
+<p class="text-3">Hello</p>
+<p class="text-4">Hello</p>
+<p class="text-5">Hello</p>
+
+<!-- The main.scss file -->
+@import 'variables'
+
+// libraries that must be imported
+// _variable.scss library ka name hai use access ese karenge
+
+<style type='text/scss'>
+  h3{
+    text-align: center;
+  }
+  .info{
+    width: 200px;
+    border: 1px solid black;
+    margin: 0 auto;
+  }
+  .info-important{
+    @extend .info;
+    background-color: magenta;
+  }
+  /* // css ko dusre css me extend karke le bhi sakte hai  */
+</style>
+<h3>Posts</h3>
+<div class="info-important">
+  <p>This is an important post. It should extend the class ".info" and have its own CSS styles.</p>
+</div>
+
+<div class="info">
+  <p>This is a simple post. It has basic styling and can be extended for other uses.</p>
+</div>
