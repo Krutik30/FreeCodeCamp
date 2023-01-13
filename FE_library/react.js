@@ -1172,7 +1172,7 @@ class MyComponent extends React.Component {
             <textarea
               onChange={this.handleChange}
               value={this.state.userInput}
-              style={textAreaStyles}
+              style = {textAreaStyles}
               placeholder='Separate Items With Commas'
             />
             <br />
