@@ -1,5 +1,4 @@
 import './App.css';
-import 'bootstrap/dist/css/bootstrap.css';
 import React from "react";
 
 const setOfQuotes = [
@@ -342,6 +341,7 @@ class App extends React.Component {
     render() {
       return (
         <div class="box" style={{backgroundColor: this.randomColor()}}>
+            <h2>Random Quotes</h2>
           <h1 className='quote'>{this.state.quote}</h1>
           <blockquote className='author'>~ {this.state.author}</blockquote>
           <button className='btn' style={{backgroundColor: "white"}} onClick={this.shuffle}>New Quote</button>
