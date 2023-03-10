@@ -1,0 +1,44 @@
+commands 
+
+sh - shell
+    it will run the command in given file 
+bash - bourne-again shell
+shebang - track file
+
+variable --
+$varname 
+read varname
+echo $varname
+
+chmod <mode change> <filename>
+
+echo $* -> for all argument with the excution time
+echo $1 -> first argument
+
+You can compare integers inside the brackets ([[ ... ]]) of your if with -eq (equal), -ne (not equal), -lt (less than), -le (less than or equal), -gt (greater than), -ge (greater than or equal). 
+
+just run [[ 4 -le 5 ]] in terminal return nothing it will return $?
+
+then echo $? -> 0 --> true (it shows cmd have zero errors)
+
+[[ 4 -ge 5 ]] --> $? -> 1 --> false
+
+; by this we can write two cmd in row 
+     [[ 4 -ge 5 ]]; echo $?
+
+if [[ $1 -gt 0 ]]
+then
+  echo true
+else
+  echo false
+fi
+
+if [[ $1 -gt 0 ]]
+then
+  for (( i = $1; i > 0; i-- ))
+  do
+    echo $i
+  done
+else
+  echo false
+fi
